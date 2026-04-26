@@ -63,4 +63,11 @@ resetBtn.addEventListener("click", () => {
   if (confirm("Reset the game? All players will be marked active.")) resetGame();
 });
 
+const titleScreen = document.getElementById("title-screen");
+const enterBtn = document.getElementById("enter-btn");
+enterBtn.addEventListener("click", () => {
+  titleScreen.classList.add("hidden");
+  setTimeout(() => titleScreen.remove(), 800);
+});
+
 render();
