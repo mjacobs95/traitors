@@ -1,0 +1,139 @@
+:root {
+  --bg: #1a1614;
+  --card: #2a221e;
+  --card-dead: #1f1a17;
+  --text: #f4ecd8;
+  --muted: #8a7a6a;
+  --traitor: #b03030;
+  --faithful: #2e7a4a;
+  --accent: #c9a24a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #3a302a;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#reset-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--muted);
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+}
+#reset-btn:hover { color: var(--text); border-color: var(--text); }
+
+main#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+.card .photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  background-color: #3a302a;
+  position: relative;
+}
+
+.card .name {
+  text-align: center;
+  padding: 0.6rem 0.5rem 0.3rem;
+  font-size: 1.1rem;
+}
+
+.card .role {
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding-bottom: 0.5rem;
+  color: var(--muted);
+}
+
+.card .actions {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-top: 1px solid #3a302a;
+}
+
+.card .actions button {
+  flex: 1;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid #4a3e34;
+  padding: 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+.card .actions button:hover { background: #3a302a; }
+.card .actions button.active { background: #4a3e34; }
+
+/* Dead states */
+.card.banished, .card.murdered {
+  background: var(--card-dead);
+}
+.card.banished .photo, .card.murdered .photo {
+  filter: grayscale(1) brightness(0.5);
+}
+
+.card.banished .role.revealed.traitor { color: var(--traitor); font-weight: bold; }
+.card.banished .role.revealed.faithful { color: var(--faithful); font-weight: bold; }
+
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  pointer-events: none;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+.card.banished .overlay::after { content: "Banished"; }
+.card.murdered .overlay::after { content: "Murdered"; color: var(--traitor); }
+
+/* Hide overlay on photo only, leaving photo greyed */
+.card:not(.banished):not(.murdered) .overlay { display: none; }
