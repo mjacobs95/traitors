@@ -224,3 +224,271 @@ main#grid {
 .card:not(.banished):not(.murdered) .overlay { display: none; }
 .card.banished .overlay::after { content: "Banished"; color: var(--accent); }
 .card.murdered .overlay::after { content: "Murdered"; color: #ff6060; }
+
+/* ============================================================
+   Title screen
+   ============================================================ */
+
+.title-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  padding: 0 4vw;
+  background-color: #1a120c;
+  background-image:
+    radial-gradient(ellipse at center,
+      rgba(0,0,0,0) 25%,
+      rgba(0,0,0,0.55) 75%,
+      rgba(0,0,0,0.9) 100%),
+    url('stones.svg');
+  background-size: auto, 400px 200px;
+  background-repeat: no-repeat, repeat;
+  transition: opacity 0.7s ease;
+  overflow: hidden;
+}
+
+.title-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.title-content {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.title-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.title-logo img {
+  width: clamp(280px, 42vw, 720px);
+  height: auto;
+  filter:
+    drop-shadow(0 4px 0 rgba(0,0,0,0.6))
+    drop-shadow(0 10px 24px rgba(0,0,0,0.85))
+    drop-shadow(0 0 50px rgba(255, 120, 40, 0.35));
+}
+
+.title-subtitle {
+  font-family: "UnifrakturMaguntia", "UnifrakturCook", serif;
+  font-size: clamp(1.8rem, 3.8vw, 3.4rem);
+  color: #f08a1f;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,0.5),
+    0 4px 12px rgba(0,0,0,0.85),
+    0 0 24px rgba(255, 120, 40, 0.35);
+}
+
+.enter-btn {
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  padding: 0.85rem 3rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 0.45em;
+  text-indent: 0.45em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+.enter-btn:hover {
+  background: var(--gold-dark);
+  color: var(--gold-light);
+  box-shadow: 0 0 24px rgba(201, 162, 74, 0.45);
+}
+
+/* --- Brazier --- */
+
+.brazier {
+  position: relative;
+  width: clamp(110px, 14vw, 180px);
+  height: clamp(360px, 60vh, 560px);
+  flex-shrink: 0;
+  z-index: 1;
+  transform: translateY(8vh);
+}
+
+.brazier-glow {
+  position: absolute;
+  top: 5%;
+  left: -180%;
+  right: -180%;
+  bottom: -10%;
+  background: radial-gradient(ellipse at 50% 35%,
+    var(--glow-color) 0%,
+    transparent 55%);
+  pointer-events: none;
+  filter: blur(18px);
+  animation: glow-pulse 2.4s ease-in-out infinite alternate;
+  z-index: 0;
+}
+.brazier.left  { --glow-color: rgba(255, 90, 30, 0.38); }
+.brazier.right { --glow-color: rgba(60, 220, 100, 0.32); }
+
+@keyframes glow-pulse {
+  0%   { opacity: 0.6; transform: scale(1); }
+  100% { opacity: 0.95; transform: scale(1.06); }
+}
+
+.bowl {
+  position: absolute;
+  top: 28%;
+  left: 0;
+  right: 0;
+  height: 14%;
+  background:
+    radial-gradient(ellipse at 50% 0%, #0a0604 0%, transparent 55%),
+    linear-gradient(180deg,
+      #2a1a10 0%,
+      #1a0f08 45%,
+      #3a2a1a 100%);
+  border-radius: 6px 6px 50% 50% / 6px 6px 90% 90%;
+  box-shadow:
+    inset 0 -8px 18px rgba(0,0,0,0.9),
+    0 6px 14px rgba(0,0,0,0.8);
+}
+
+.rim {
+  position: absolute;
+  top: -4px;
+  left: -5px;
+  right: -5px;
+  height: 11px;
+  background: linear-gradient(180deg,
+    var(--gold-light) 0%,
+    var(--gold) 45%,
+    var(--gold-dark) 100%);
+  border-radius: 4px;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255, 230, 160, 0.6);
+}
+
+.stand {
+  position: absolute;
+  top: 42%;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  background: linear-gradient(90deg,
+    #0a0604 0%,
+    #4a3a2a 50%,
+    #0a0604 100%);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6);
+}
+
+.base {
+  position: absolute;
+  bottom: 0;
+  left: 18%;
+  right: 18%;
+  height: 16px;
+  background: linear-gradient(180deg, #4a3a2a 0%, #1a0f08 100%);
+  border-radius: 3px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+}
+
+/* --- Flames --- */
+
+.flames {
+  position: absolute;
+  bottom: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 32%;
+  pointer-events: none;
+}
+
+.flame {
+  position: absolute;
+  bottom: -8%;
+  left: 50%;
+  border-radius: 50% 50% 22% 22% / 65% 65% 35% 35%;
+  mix-blend-mode: screen;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.flames-red .flame {
+  background: radial-gradient(ellipse at 50% 95%,
+    rgba(255, 250, 220, 0.95) 0%,
+    rgba(255, 200, 110, 0.92) 18%,
+    rgba(255, 110, 40, 0.85) 45%,
+    rgba(200, 30, 30, 0.55) 75%,
+    transparent 100%);
+}
+
+.flames-green .flame {
+  background: radial-gradient(ellipse at 50% 95%,
+    rgba(230, 255, 230, 0.95) 0%,
+    rgba(150, 255, 170, 0.92) 18%,
+    rgba(50, 220, 90, 0.85) 45%,
+    rgba(20, 130, 60, 0.55) 75%,
+    transparent 100%);
+}
+
+.flame.f1 {
+  width: 100%;
+  height: 100%;
+  filter: blur(7px);
+  animation: flicker1 0.45s ease-in-out infinite alternate;
+}
+.flame.f2 {
+  width: 70%;
+  height: 92%;
+  filter: blur(5px);
+  animation: flicker2 0.33s ease-in-out infinite alternate;
+}
+.flame.f3 {
+  width: 45%;
+  height: 78%;
+  filter: blur(3px);
+  animation: flicker3 0.27s ease-in-out infinite alternate;
+}
+.flame.f4 {
+  width: 24%;
+  height: 56%;
+  filter: blur(1.5px);
+  animation: flicker4 0.19s ease-in-out infinite alternate;
+}
+
+@keyframes flicker1 {
+  0%   { transform: translateX(-50%) scale(1, 1)       skewX(-2deg); }
+  100% { transform: translateX(-50%) scale(0.94, 1.07) skewX(3deg); }
+}
+@keyframes flicker2 {
+  0%   { transform: translateX(-50%) translateY(-4%) scale(1.02, 0.96) skewX(2deg); }
+  100% { transform: translateX(-50%) translateY(-9%) scale(0.96, 1.08) skewX(-3deg); }
+}
+@keyframes flicker3 {
+  0%   { transform: translateX(-50%) translateY(-9%)  scale(1, 0.94); }
+  100% { transform: translateX(-50%) translateY(-16%) scale(0.92, 1.12); }
+}
+@keyframes flicker4 {
+  0%   { transform: translateX(-50%) translateY(-12%) scale(0.95, 0.92); }
+  100% { transform: translateX(-50%) translateY(-22%) scale(1.05, 1.18); }
+}
+
+@media (max-width: 700px) {
+  .title-screen { padding: 0 2vw; }
+  .brazier { width: 90px; }
+}

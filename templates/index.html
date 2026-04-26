@@ -4,9 +4,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Traitors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <div id="title-screen" class="title-screen">
+    <div class="brazier left">
+      <div class="brazier-glow"></div>
+      <div class="flames flames-red">
+        <div class="flame f1"></div>
+        <div class="flame f2"></div>
+        <div class="flame f3"></div>
+        <div class="flame f4"></div>
+      </div>
+      <div class="bowl"><div class="rim"></div></div>
+      <div class="stand"></div>
+      <div class="base"></div>
+    </div>
+
+    <div class="title-content">
+      <div class="title-logo">
+        <img src="{{ url_for('static', filename='traitors_logo.png.webp') }}" alt="The Traitors">
+        <div class="title-subtitle">Unlicensed 14 Club Edition</div>
+      </div>
+      <button id="enter-btn" class="enter-btn" type="button">Enter</button>
+    </div>
+
+    <div class="brazier right">
+      <div class="brazier-glow"></div>
+      <div class="flames flames-green">
+        <div class="flame f1"></div>
+        <div class="flame f2"></div>
+        <div class="flame f3"></div>
+        <div class="flame f4"></div>
+      </div>
+      <div class="bowl"><div class="rim"></div></div>
+      <div class="stand"></div>
+      <div class="base"></div>
+    </div>
+  </div>
+
   <header>
     <h1>The Traitors</h1>
     <button id="reset-btn" type="button">Reset game</button>

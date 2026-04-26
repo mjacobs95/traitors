@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="160" viewBox="0 0 320 160">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#7a6450"/>
+      <stop offset="1" stop-color="#3a2c20"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#6e5944"/>
+      <stop offset="1" stop-color="#332518"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#82684f"/>
+      <stop offset="1" stop-color="#3f3023"/>
+    </linearGradient>
+    <linearGradient id="g4" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#6c5742"/>
+      <stop offset="1" stop-color="#352618"/>
+    </linearGradient>
+    <linearGradient id="g5" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#785f48"/>
+      <stop offset="1" stop-color="#3a2b1d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- mortar -->
+  <rect width="320" height="160" fill="#120b06"/>
+
+  <!-- row 1: two full blocks -->
+  <rect x="2"   y="2"  width="156" height="76" fill="url(#g1)"/>
+  <rect x="162" y="2"  width="156" height="76" fill="url(#g2)"/>
+
+  <!-- row 2: half + full + half (offset, tiles seamlessly with neighbour) -->
+  <rect x="0"   y="82" width="78"  height="76" fill="url(#g3)"/>
+  <rect x="82"  y="82" width="156" height="76" fill="url(#g4)"/>
+  <rect x="242" y="82" width="78"  height="76" fill="url(#g5)"/>
+
+  <!-- top-edge highlights for a subtle bevel -->
+  <g fill="#ffe0b4" opacity="0.14">
+    <rect x="2"   y="2"  width="156" height="2"/>
+    <rect x="162" y="2"  width="156" height="2"/>
+    <rect x="0"   y="82" width="78"  height="2"/>
+    <rect x="82"  y="82" width="156" height="2"/>
+    <rect x="242" y="82" width="78"  height="2"/>
+  </g>
+
+  <!-- bottom-edge shadows -->
+  <g fill="#000" opacity="0.35">
+    <rect x="2"   y="76" width="156" height="2"/>
+    <rect x="162" y="76" width="156" height="2"/>
+    <rect x="0"   y="156" width="78"  height="2"/>
+    <rect x="82"  y="156" width="156" height="2"/>
+    <rect x="242" y="156" width="78"  height="2"/>
+  </g>
+</svg>
