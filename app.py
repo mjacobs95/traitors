@@ -12,7 +12,10 @@ app = Flask(__name__)
 
 def load_players():
     with PLAYERS_FILE.open() as f:
-        return json.load(f)
+        players = json.load(f)
+    for p in players:
+        p.setdefault("shielded", False)
+    return players
 
 
 def save_players(players):
@@ -39,7 +42,26 @@ def set_status(player_id):
     players = load_players()
     for p in players:
         if p["id"] == player_id:
+            if status == "murdered" and p.get("shielded"):
+                abort(400, "shielded players cannot be murdered")
             p["status"] = status
+            if status != "active":
+                p["shielded"] = False
+            save_players(players)
+            return jsonify(p)
+    abort(404, f"unknown player: {player_id}")
+
+
+@app.route("/api/player/<player_id>/shield", methods=["POST"])
+def set_shield(player_id):
+    data = request.get_json() or {}
+    shielded = bool(data.get("shielded"))
+    players = load_players()
+    for p in players:
+        if p["id"] == player_id:
+            if shielded and p["status"] != "active":
+                abort(400, "shield only applies to active players")
+            p["shielded"] = shielded
             save_players(players)
             return jsonify(p)
     abort(404, f"unknown player: {player_id}")
@@ -50,6 +72,7 @@ def reset():
     players = load_players()
     for p in players:
         p["status"] = "active"
+        p["shielded"] = False
     save_players(players)
     return jsonify(players)
 
