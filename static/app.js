@@ -27,8 +27,11 @@ function cardHTML(p) {
   const roleText = p.status === "banished" ? p.role : "&nbsp;";
   return `
     <div class="card ${p.status}" data-id="${p.id}">
-      <div class="photo" style="background-image: url('${photoUrl}')">
-        <div class="overlay"></div>
+      <div class="frame">
+        <div class="photo" style="background-image: url('${photoUrl}')">
+          <div class="cross"></div>
+          <div class="overlay"></div>
+        </div>
       </div>
       <div class="name">${p.name}</div>
       <div class="role ${roleClass}">${roleText}</div>
