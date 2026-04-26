@@ -165,6 +165,31 @@ main#grid {
 }
 .actions button:hover { background: rgba(0, 0, 0, 0.6); border-color: var(--gold); }
 .actions button.active { background: var(--gold-dark); border-color: var(--gold); color: var(--gold-light); }
+.actions button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(201, 162, 74, 0.2);
+}
+.actions button:disabled:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(201, 162, 74, 0.2);
+}
+
+.shield-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+}
+.shield-overlay svg {
+  width: 80%;
+  height: 80%;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.85));
+}
 
 /* Dead states — slight greyout, NOT heavy */
 .card.banished .photo,
