@@ -50,7 +50,12 @@
     <h1>The Traitors</h1>
     <button id="reset-btn" type="button">Reset game</button>
   </header>
-  <main id="grid"></main>
+  <div class="layout">
+    <aside class="sidebar">
+      <div id="sidebar-stages"></div>
+    </aside>
+    <main id="grid"></main>
+  </div>
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
