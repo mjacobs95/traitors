@@ -16,9 +16,11 @@
       <stop offset="0" stop-color="#6c5742"/>
       <stop offset="1" stop-color="#352618"/>
     </linearGradient>
+    <!-- g5 intentionally matches g3 so the two halves of the
+         seam-spanning stone in row 2 line up across tiles. -->
     <linearGradient id="g5" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0" stop-color="#785f48"/>
-      <stop offset="1" stop-color="#3a2b1d"/>
+      <stop offset="0" stop-color="#82684f"/>
+      <stop offset="1" stop-color="#3f3023"/>
     </linearGradient>
   </defs>
 
