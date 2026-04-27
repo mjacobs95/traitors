@@ -4,8 +4,11 @@ from flask import Flask, jsonify, render_template, request, abort
 
 ROOT = Path(__file__).parent
 PLAYERS_FILE = ROOT / "players.json"
+STATE_FILE = ROOT / "game_state.json"
 
 VALID_STATUSES = {"active", "banished", "murdered"}
+VALID_STAGES = ("T1", "RT1", "N1", "T2", "RT2", "N2", "T3", "RT3", "N3", "FT", "F")
+DEFAULT_STAGE = "T1"
 
 app = Flask(__name__)
 
@@ -23,6 +26,18 @@ def save_players(players):
         json.dump(players, f, indent=2)
 
 
+def load_state():
+    if not STATE_FILE.exists():
+        return {"stage": DEFAULT_STAGE}
+    with STATE_FILE.open() as f:
+        return json.load(f)
+
+
+def save_state(state):
+    with STATE_FILE.open("w") as f:
+        json.dump(state, f, indent=2)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -30,7 +45,19 @@ def index():
 
 @app.route("/api/state")
 def get_state():
-    return jsonify(load_players())
+    return jsonify({"players": load_players(), "stage": load_state()["stage"]})
+
+
+@app.route("/api/stage", methods=["POST"])
+def set_stage():
+    data = request.get_json() or {}
+    stage = data.get("stage")
+    if stage not in VALID_STAGES:
+        abort(400, f"stage must be one of {VALID_STAGES}")
+    state = load_state()
+    state["stage"] = stage
+    save_state(state)
+    return jsonify(state)
 
 
 @app.route("/api/player/<player_id>/status", methods=["POST"])
@@ -74,7 +101,8 @@ def reset():
         p["status"] = "active"
         p["shielded"] = False
     save_players(players)
-    return jsonify(players)
+    save_state({"stage": DEFAULT_STAGE})
+    return jsonify({"players": players, "stage": DEFAULT_STAGE})
 
 
 if __name__ == "__main__":
