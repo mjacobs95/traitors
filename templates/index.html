@@ -48,13 +48,44 @@
 
   <header>
     <h1>The Traitors</h1>
+    <nav class="page-nav">
+      <button data-page="rules" type="button" class="active">Rules</button>
+      <button data-page="players" type="button">Players</button>
+    </nav>
     <button id="reset-btn" type="button">Reset game</button>
   </header>
   <div class="layout">
     <aside class="sidebar">
       <div id="sidebar-stages"></div>
     </aside>
-    <main id="grid"></main>
+
+    <section id="rules-page" class="page" data-page="rules">
+      <div class="rules-content">
+        <h2>How to Play</h2>
+        <p class="placeholder">[Game overview — describe the basic premise of The Traitors, the two teams, and the win conditions for each. Fill in later.]</p>
+
+        <h3 class="rules-section-heading">Game Flow</h3>
+        <p class="rules-intro">The game runs over three days, each with a task, a round table, and a night. After the third night, eight finalists compete in a final task before the final round table.</p>
+        <div id="phase-diagram" class="phase-diagram"></div>
+
+        <h3 class="rules-section-heading">Roles</h3>
+        <p class="placeholder">[Faithful and Traitor descriptions — how each team wins, what they know, and what they can do. Fill in later.]</p>
+
+        <h3 class="rules-section-heading">Tasks &amp; Shields</h3>
+        <p class="placeholder">[How tasks work, who plays, and how shields are won and used. Fill in later.]</p>
+
+        <h3 class="rules-section-heading">Round Table</h3>
+        <p class="placeholder">[How banishment works at each round table — who votes, how ties are resolved, what happens to the banished player. Fill in later.]</p>
+
+        <h3 class="rules-section-heading">Night</h3>
+        <p class="placeholder">[How the Traitors choose their target each night, how shields block murders, and what murdered players do afterwards. Fill in later.]</p>
+
+        <h3 class="rules-section-heading">The Final</h3>
+        <p class="placeholder">[The final task (Liar's Bluff), the prize, and how the final round table runs until the game resolves. Fill in later.]</p>
+      </div>
+    </section>
+
+    <main id="grid" class="page hidden" data-page="players"></main>
   </div>
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
