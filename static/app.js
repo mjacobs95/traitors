@@ -109,6 +109,43 @@ function cardHTML(p) {
   `;
 }
 
+function renderPhaseDiagram() {
+  const container = document.getElementById("phase-diagram");
+  if (!container) return;
+  const groups = [];
+  for (const s of STAGES) {
+    let g = groups.find((g) => g.name === s.group);
+    if (!g) {
+      g = { name: s.group, items: [] };
+      groups.push(g);
+    }
+    g.items.push(s);
+  }
+  container.innerHTML = groups.map((g) => `
+    <div class="phase-row">
+      <div class="phase-day-label">${g.name}</div>
+      <div class="phase-cards">
+        ${g.items.map((s, i) => `
+          ${i > 0 ? '<div class="phase-arrow">&rarr;</div>' : ""}
+          <div class="phase-card phase-${s.type}">
+            <span class="phase-icon">${STAGE_ICONS[s.type]}</span>
+            <span class="phase-name">${s.label}</span>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+}
+
+function showPage(name) {
+  document.querySelectorAll(".page").forEach((el) => {
+    el.classList.toggle("hidden", el.dataset.page !== name);
+  });
+  document.querySelectorAll(".page-nav button").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.page === name);
+  });
+}
+
 function renderSidebar() {
   const groups = [];
   for (const s of STAGES) {
@@ -165,6 +202,14 @@ sidebarStages.addEventListener("click", async (e) => {
   await setStage(stage);
   render();
 });
+
+document.querySelector(".page-nav").addEventListener("click", (e) => {
+  const btn = e.target.closest("button[data-page]");
+  if (!btn) return;
+  showPage(btn.dataset.page);
+});
+
+renderPhaseDiagram();
 
 const titleScreen = document.getElementById("title-screen");
 const enterBtn = document.getElementById("enter-btn");
