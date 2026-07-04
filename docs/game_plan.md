@@ -78,16 +78,47 @@ Roughly 1 Traitor per 6 players.
 
 All tasks must be invigilatable by **the two hosts together** (not two per group). Eliminated players still take part for engagement but cannot win shields.
 
-| When  | Task                 | Description                                                                                                    | Winners                       |
-|-------|----------------------|----------------------------------------------------------------------------------------------------------------|-------------------------------|
-| Day 1 | The Riddle Race      | 3–5 prepared riddles solved in parallel; first players to bring a fully correct sheet to a host win.            | First finisher (1 shield) |
-| Day 2 | Two Truths and a Lie | Each player writes 2 truths + 1 lie; cards read anonymously; everyone guesses which is the lie.                 | Top scorer (2 shields)         |
-| Day 3 | Find the Tokens      | Hosts hide ~30 small tokens in a defined area; players have 5 minutes to find as many as they can.              | Top 2 collectors (2 shields)  |
-| Final | Liar's Bluff         | Single-elimination bracket. Each round, one player draws a secret lie/truth card, deliver a one-sentence statement, and guess whether the other lied. | Bracket winner (special prize, see below) |
+| When  | Task                 | Description                                                                                                    | Team size   | Winners                       |
+|-------|----------------------|----------------------------------------------------------------------------------------------------------------|-------------|-------------------------------|
+| Day 1 | The Riddle Race      | 3–5 prepared riddles solved in parallel; first team to bring a fully correct sheet to a host win.            | ~4 players  | First team (1 shield) |
+| Day 2 | Hula Hoop Pass       | Teams link arms in a circle; fastest team to pass the hula hoop all the way around without breaking the chain wins. | ~8 players        | Fastest team (1 shield) |
+| Day 2 | 100-Item Memory      | A picture of 100 items is shown on screen for a set time; teams recall as many items as they can. Hosts check against the answer sheet. | ~4 players        | Most items recalled (1 shield) |
+| Day 3 | Paper Aeroplane      | Teams construct paper aeroplanes; the plane that flies the furthest wins.                                       | ~3 players        | Longest flight (1 shield) |
+| Day 3 | Solo Cup Challenge   | 10 solo cups are arranged; first team to land a ball in all of them wins.                                       | ~6 players        | First team to fill all cups (1 shield) |
+| Final | Stick or Swap         | Single-elimination bracket. Each round, two players draw a card, one looks at theirs, the other one has to decide to stick or swap. Highest card wins. | 1 v 1       | Bracket winner (special prize, see below) |
 
 ### Final task prize
 
-The winner of the Final Task gets to select 1 of the other finalists to go into a seperate room, where they have to tell them truthfully whether they are a Traitor or a Faithful. 
+The winner of the Final Task gets to select one of the other finalists to go into a seperate room, where they have to tell them truthfully whether they are a Traitor or a Faithful. 
+
+## Shopping list
+
+Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
+
+### Core game props
+- [ ] **Shield tokens** ×3 — 2 awarded across tasks + 1 spare. Physical & visible.
+- [ ] **Whiteboards and markers** ×24 — plus a few spares (they dry out).
+- [ ] **Traitors costumes** ×2 — for round-table / reveal drama.
+
+### Day 1 — The Riddle Race
+- [ ] **Printed riddle sheets** ×10 — ~6 teams + spares.
+- [ ] **Pens** ×12 — one per team + spares.
+- [ ] **Master answer sheet** ×1 — host copy for checking.
+
+### Day 2 — Hula Hoop Pass & 100-Item Memory
+- [ ] **Hula hoops** ×2 — 1 in use + spare.
+- [ ] **100-item picture** ×1 — prepared in advance.
+- [ ] **Blank paper** ×30 — ~6 teams + spares.
+- [ ] **Master answer sheet (display on screen)** ×1 — host copy of all 100 items.
+
+### Day 3 — Paper Aeroplane & Solo Cup Challenge
+- [ ] **Blank paper** ×1 ream (500) — plenty for building + retries.
+- [x] **Tape measure / long measuring tape** ×1 — to judge furthest flight (10m+ ideal).
+- [ ] **Solo cups** ×10 — reusable.
+- [ ] **Balls (ping-pong)** ×1 pack (~12) — for the cup challenge.
+
+### Final — Stick or Swap
+- [x] **Stick or Swap cards** ×1 deck — normal playing cards.
 
 ## Other mechanics
 
