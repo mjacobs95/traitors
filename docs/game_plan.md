@@ -99,6 +99,7 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 - [ ] **Shield tokens** ×3 — 2 awarded across tasks + 1 spare. Physical & visible.
 - [ ] **Whiteboards and markers** ×24 — plus a few spares (they dry out).
 - [ ] **Traitors costumes** ×2 — for round-table / reveal drama.
+- [ ] **Blindfolds** x24 - plus a few spares
 
 ### Day 1 — The Riddle Race
 - [ ] **Printed riddle sheets** ×10 — ~6 teams + spares.
@@ -120,9 +121,8 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 ### Final — Stick or Swap
 - [x] **Stick or Swap cards** ×1 deck — normal playing cards.
 
-## Other mechanics
-
-- **The Final** is iterated round-table voting (one out per round). The group may elect to end the game at the start of any round; surviving Traitors are then revealed and Traitors win if any remain.
-- **Recruitment** — Traitors may recruit a Faithful mid-game (e.g. after losing a teammate). Mechanic to be designed.
-- **Tie-breaking at the round table** — re-vote between tied players; if still tied, run a second re-vote between just those players.
-- **Eliminated players** participate in tasks but cannot win shields, attend the round table, or be eliminated again.
+## To do list:
+- [ ] Fill in text on rules page
+- [ ] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, 100-item picture, etc.)
+- [ ] Complete profile pictures
+- [ ] Research how to make the app play music during Night Stages
