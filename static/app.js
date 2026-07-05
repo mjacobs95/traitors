@@ -26,6 +26,86 @@ const STAGES = [
   { id: "F",   group: "Finale", type: "final", label: "Final" },
 ];
 
+// Which main page each stage type opens when selected in the sidebar.
+// Task stages get their own content page; action stages jump to the grid.
+const STAGE_PAGE = { task: "task", rt: "players", night: "players", final: "players" };
+
+// Content for the task stages. A stage with more than one entry in `tasks`
+// shows a sub-tab per subtask. A `reveals` entry is content hidden behind a
+// button (riddles, images, the prize) so hosts can unveil it on cue — swap the
+// placeholder `body` for the real riddle sheet / picture when ready.
+const TASK_CONTENT = {
+  T1: {
+    tasks: [
+      {
+        name: "The Riddle Race",
+        teamSize: "~4 players per team",
+        prize: "1 shield — first team home",
+        rules: "Each team races to solve five riddles. The first team to bring a fully correct sheet to a host wins. Hosts check the answers; a sheet with any wrong answer is sent back to be fixed. Reveal the riddles below once every team is ready.",
+        reveals: [
+          { button: "Reveal", label: "Riddles", body: `
+            <ol class="riddle-list">
+              <li>
+                <p class="riddle-q">I speak without a mouth and hear without ears…</p>
+              </li>
+              <li>
+                <p class="riddle-q">The more you take, the more you leave behind…</p>
+              </li>
+            </ol>` },
+        ],
+      },
+    ],
+  },
+  T2: {
+    tasks: [
+      {
+        name: "Hula Hoop Pass",
+        teamSize: "~8 players per team",
+        prize: "1 shield — fastest team",
+        rules: "Teams link arms in a circle. The fastest team to pass a hula hoop all the way around the circle — without breaking the chain — wins.",
+      },
+      {
+        name: "100-Item Memory",
+        teamSize: "~4 players per team",
+        prize: "1 shield — most items recalled",
+        rules: "A picture of 100 items is shown on screen for a minute. Teams then recall as many items as they can. Hosts check answers against the master sheet; the team with the most correct wins.",
+        reveals: [
+          { button: "Reveal", label: "100-item picture", body: `<p class="placeholder">Add the memory image here.</p>` },
+        ],
+      },
+    ],
+  },
+  T3: {
+    tasks: [
+      {
+        name: "Paper Aeroplane",
+        teamSize: "~3 players per team",
+        prize: "1 shield — longest flight",
+        rules: "Teams construct paper aeroplanes from the supplied paper. Each team gets one measured throw; the plane that flies the furthest wins.",
+      },
+      {
+        name: "Solo Cup Challenge",
+        teamSize: "~6 players per team",
+        prize: "1 shield — first to fill all cups",
+        rules: "Ten cups are arranged for each team. The first team to land a ball in all ten cups wins.",
+      },
+    ],
+  },
+  FT: {
+    tasks: [
+      {
+        name: "Stick or Swap",
+        teamSize: "1 v 1 — 8 finalists",
+        prize: "Special prize (see below)",
+        rules: "A single-elimination bracket. In each round two players draw a card. One looks at their own card, then the other must decide to stick with the card they hold or swap it for their opponent's. The higher card wins and advances.",
+        reveals: [
+          { button: "Reveal", label: "Prize", body: "The winner takes one other finalist of their choosing into a separate room, who must then tell them truthfully whether they are a Traitor or a Faithful." },
+        ],
+      },
+    ],
+  },
+};
+
 async function fetchState() {
   const res = await fetch("/api/state");
   const data = await res.json();
@@ -66,7 +146,10 @@ async function setShield(id, shielded) {
 
 async function resetGame() {
   await fetch("/api/reset", { method: "POST" });
-  render();
+  await render();
+  // Reset returns the game to the start: stage is back to Task 1, so show its page.
+  renderTaskPage("T1");
+  showPage("task");
 }
 
 function cardHTML(p) {
@@ -137,6 +220,59 @@ function renderPhaseDiagram() {
   `).join("");
 }
 
+function taskBlockHTML(t) {
+  return `
+    <div class="task-block">
+      <div class="task-block-head">
+        <h2 class="task-name">${t.name}</h2>
+        <div class="task-badges">
+          <span class="task-badge">${t.teamSize}</span>
+          <span class="task-badge prize">${t.prize}</span>
+        </div>
+      </div>
+      <p class="task-rules">${t.rules}</p>
+      ${(t.reveals || []).map((r) => `
+        <div class="task-reveal">
+          <button class="reveal-btn" type="button" data-label="${r.button}">${r.button}</button>
+          <div class="reveal-body" hidden>
+            ${r.label ? `<div class="task-media-label">${r.label}</div>` : ""}
+            <div class="reveal-content">${r.body}</div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+// Multi-subtask stages (Tasks 2 & 3) show one subtask at a time behind sub-tabs.
+function renderTaskPage(stageId, subtaskIndex = 0) {
+  const container = document.getElementById("task-content");
+  if (!container) return;
+  const stage = STAGES.find((s) => s.id === stageId);
+  const content = TASK_CONTENT[stageId];
+  if (!content) {
+    container.innerHTML = `<p class="placeholder">No task content for this stage yet.</p>`;
+    return;
+  }
+  container.dataset.stage = stageId;
+  const tasks = content.tasks;
+  const active = Math.min(Math.max(subtaskIndex, 0), tasks.length - 1);
+  // Tabs use a neutral label ("Sub-task N") so players can't read the next
+  // task's name off the tab bar. Override per subtask with a `tab` attribute.
+  const subtabs = tasks.length > 1 ? `
+    <div class="subtask-tabs">
+      ${tasks.map((t, i) => `
+        <button class="subtask-tab ${i === active ? "active" : ""}" type="button" data-subtask="${i}">${t.tab || `Sub-task ${i + 1}`}</button>
+      `).join("")}
+    </div>
+  ` : "";
+  container.innerHTML = `
+    <div class="task-eyebrow">${stage.group} &middot; ${stage.label}</div>
+    ${subtabs}
+    ${taskBlockHTML(tasks[active])}
+  `;
+}
+
 function showPage(name) {
   document.querySelectorAll(".page").forEach((el) => {
     el.classList.toggle("hidden", el.dataset.page !== name);
@@ -197,16 +333,37 @@ resetBtn.addEventListener("click", () => {
 sidebarStages.addEventListener("click", async (e) => {
   const btn = e.target.closest(".stage-item");
   if (!btn) return;
-  const stage = btn.dataset.stage;
-  if (stage === currentStage) return;
-  await setStage(stage);
-  render();
+  const stageId = btn.dataset.stage;
+  const stage = STAGES.find((s) => s.id === stageId);
+  if (stageId !== currentStage) {
+    await setStage(stageId);
+    await render();
+  }
+  const page = STAGE_PAGE[stage.type] || "players";
+  if (page === "task") renderTaskPage(stageId);
+  showPage(page);
 });
 
 document.querySelector(".page-nav").addEventListener("click", (e) => {
   const btn = e.target.closest("button[data-page]");
   if (!btn) return;
   showPage(btn.dataset.page);
+});
+
+const taskContent = document.getElementById("task-content");
+taskContent.addEventListener("click", (e) => {
+  const subtab = e.target.closest(".subtask-tab");
+  if (subtab) {
+    renderTaskPage(taskContent.dataset.stage, Number(subtab.dataset.subtask));
+    return;
+  }
+  const revealBtn = e.target.closest(".reveal-btn");
+  if (revealBtn) {
+    const body = revealBtn.closest(".task-reveal").querySelector(".reveal-body");
+    body.hidden = !body.hidden;
+    revealBtn.textContent = body.hidden ? revealBtn.dataset.label : "Hide";
+    revealBtn.classList.toggle("revealed", !body.hidden);
+  }
 });
 
 renderPhaseDiagram();
