@@ -22,7 +22,7 @@ flowchart TD
     N2 --> T3[Task 3<br/>+2 shields]
     T3 --> RT3[Round Table 3<br/>3 banished]
     RT3 --> N3[Night 3<br/>3 murders]
-    N3 --> FT[Final Task: Liar's Bluff<br/>8 finalists compete]
+    N3 --> FT[Final Task: Stick or Swap<br/>8 finalists compete]
     FT --> F[Final Round Table<br/>iterated voting]
     F --> End([Game ends])
 ```
@@ -98,7 +98,7 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 ### Core game props
 - [ ] **Shield tokens** ×3 — 2 awarded across tasks + 1 spare. Physical & visible.
 - [ ] **Whiteboards and markers** ×24 — plus a few spares (they dry out).
-- [ ] **Traitors costumes** ×2 — for round-table / reveal drama.
+- [x] **Traitors costumes** ×2 — for round-table / reveal drama.
 - [ ] **Blindfolds** x24 - plus a few spares
 
 ### Day 1 — The Riddle Race
@@ -122,7 +122,7 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 - [x] **Stick or Swap cards** ×1 deck — normal playing cards.
 
 ## To do list:
-- [ ] Fill in text on rules page
+- [x] Fill in text on rules page
 - [ ] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, 100-item picture, etc.)
 - [ ] Complete profile pictures
 - [ ] Research how to make the app play music during Night Stages
