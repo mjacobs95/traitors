@@ -65,10 +65,11 @@ const TASK_CONTENT = {
         rules: "Teams link arms in a circle. The fastest team to pass a hula hoop all the way around the circle — without breaking the chain — wins.",
       },
       {
+        // TODO: we need reveal picture and reveal answer sheet for this task - that means two buttons
         name: "100-Item Memory",
         teamSize: "~4 players per team",
         prize: "1 shield — most items recalled",
-        rules: "A picture of 100 items is shown on screen for a minute. Teams then recall as many items as they can. Hosts check answers against the master sheet; the team with the most correct wins.",
+        rules: "A picture of 100 items is shown on screen for a minute. Teams then recall as many items as they can. Teams will swap sheets for marking; the team with the most correct items recalled wins.",
         reveals: [
           { button: "Reveal", label: "100-item picture", body: `<p class="placeholder">Add the memory image here.</p>` },
         ],
