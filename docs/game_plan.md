@@ -97,17 +97,17 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 
 ### Core game props
 - [ ] **Shield tokens** ×3 — 2 awarded across tasks + 1 spare. Physical & visible.
-- [ ] **Whiteboards and markers** ×24 — plus a few spares (they dry out).
+- [x] **Chalkboards and chalk** ×24 — plus a few spares.
 - [x] **Traitors costumes** ×2 — for round-table / reveal drama.
-- [ ] **Blindfolds** x24 - plus a few spares
+- [x] **Blindfolds** x24 - plus a few spares
 
 ### Day 1 — The Riddle Race
 - [ ] **Printed riddle sheets** ×10 — ~6 teams + spares.
-- [ ] **Pens** ×12 — one per team + spares.
+- [x] **Pens** ×12 — one per team + spares.
 - [ ] **Master answer sheet** ×1 — host copy for checking.
 
 ### Day 2 — Hula Hoop Pass & 100-Item Memory
-- [ ] **Hula hoops** ×2 — 1 in use + spare.
+- [x] **Hula hoops** ×2 — 1 in use + spare.
 - [ ] **100-item picture** ×1 — prepared in advance.
 - [ ] **Blank paper** ×30 — ~6 teams + spares.
 - [ ] **Master answer sheet (display on screen)** ×1 — host copy of all 100 items.
@@ -115,8 +115,8 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 ### Day 3 — Paper Aeroplane & Solo Cup Challenge
 - [ ] **Blank paper** ×1 ream (500) — plenty for building + retries.
 - [x] **Tape measure / long measuring tape** ×1 — to judge furthest flight (10m+ ideal).
-- [ ] **Solo cups** ×10 — reusable.
-- [ ] **Balls (ping-pong)** ×1 pack (~12) — for the cup challenge.
+- [x] **Solo cups** ×10 — reusable.
+- [x] **Balls (ping-pong)** ×1 pack (~12) — for the cup challenge.
 
 ### Final — Stick or Swap
 - [x] **Stick or Swap cards** ×1 deck — normal playing cards.
