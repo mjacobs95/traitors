@@ -81,8 +81,8 @@ All tasks must be invigilatable by **the two hosts together** (not two per group
 | When  | Task                 | Description                                                                                                    | Team size   | Winners                       |
 |-------|----------------------|----------------------------------------------------------------------------------------------------------------|-------------|-------------------------------|
 | Day 1 | The Riddle Race      | 3–5 prepared riddles solved in parallel; first team to bring a fully correct sheet to a host win.            | ~4 players  | First team (1 shield) |
-| Day 2 | Hula Hoop Pass       | Teams link arms in a circle; fastest team to pass the hula hoop all the way around without breaking the chain wins. | ~8 players        | Fastest team (1 shield) |
-| Day 2 | 100-Item Memory      | A picture of 100 items is shown on screen for a set time; teams recall as many items as they can. Hosts check against the answer sheet. | ~4 players        | Most items recalled (1 shield) |
+| Day 2 | Hula Hoop Pass       | Teams link arms in a chain; fastest team to pass the hula hoop all the way over without breaking the chain wins. | ~8 players        | Fastest team (1 shield) |
+| Day 2 | Memory Game          | A picture of assorted items is shown on screen for a set time; teams recall as many items as they can. Hosts check against the answer sheet. | ~4 players        | Most items recalled (1 shield) |
 | Day 3 | Paper Aeroplane      | Teams construct paper aeroplanes; the plane that flies the furthest wins.                                       | ~3 players        | Longest flight (1 shield) |
 | Day 3 | Solo Cup Challenge   | 10 solo cups are arranged; first team to land a ball in all of them wins.                                       | ~6 players        | First team to fill all cups (1 shield) |
 | Final | Stick or Swap         | Single-elimination bracket. Each round, two players draw a card, one looks at theirs, the other one has to decide to stick or swap. Highest card wins. | 1 v 1       | Bracket winner (special prize, see below) |
@@ -96,21 +96,21 @@ The winner of the Final Task gets to select one of the other finalists to go int
 Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 
 ### Core game props
-- [ ] **Shield tokens** ×3 — 2 awarded across tasks + 1 spare. Physical & visible.
+- [x] **Shield tokens** ×3 — 2 awarded across tasks + 1 spare. Physical & visible.
 - [x] **Chalkboards and chalk** ×24 — plus a few spares.
 - [x] **Traitors costumes** ×2 — for round-table / reveal drama.
 - [x] **Blindfolds** x24 - plus a few spares
 
 ### Day 1 — The Riddle Race
-- [ ] **Printed riddle sheets** ×10 — ~6 teams + spares.
+- [ ] **Blank answer sheets** ×10 — ~6 teams + spares - empty box for each answer.
 - [x] **Pens** ×12 — one per team + spares.
 - [ ] **Master answer sheet** ×1 — host copy for checking.
 
-### Day 2 — Hula Hoop Pass & 100-Item Memory
+### Day 2 — Hula Hoop Pass & Memory Game
 - [x] **Hula hoops** ×2 — 1 in use + spare.
-- [ ] **100-item picture** ×1 — prepared in advance.
+- [x] **Memory picture** ×1 — prepared in advance.
 - [ ] **Blank paper** ×30 — ~6 teams + spares.
-- [ ] **Master answer sheet (display on screen)** ×1 — host copy of all 100 items.
+- [x] **Master answer sheet (display on screen)** ×1 — host copy of all the items.
 
 ### Day 3 — Paper Aeroplane & Solo Cup Challenge
 - [ ] **Blank paper** ×1 ream (500) — plenty for building + retries.
@@ -123,6 +123,7 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 
 ## To do list:
 - [x] Fill in text on rules page
-- [ ] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, 100-item picture, etc.)
+- [ ] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, memory picture, etc.)
 - [ ] Complete profile pictures
 - [ ] Research how to make the app play music during Night Stages
+- [ ] [Optional] Diagrams to demonstrate the solo cup and hula hoop pass pages
