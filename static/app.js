@@ -46,10 +46,19 @@ const TASK_CONTENT = {
           { button: "Reveal", label: "Riddles", body: `
             <ol class="riddle-list">
               <li>
-                <p class="riddle-q">I speak without a mouth and hear without ears…</p>
+                <p class="riddle-q">I am always old, but sometimes new. I'm never sad, but sometimes I am blue. I am never empty, but only sometimes full. I never push, but I always pull. What am I?</p>
               </li>
               <li>
-                <p class="riddle-q">The more you take, the more you leave behind…</p>
+                <p class="riddle-q">I don't have lungs yet air I need; and just like you on food I feed. Although, unchecked, I can cause strife; a douse with water ends my life. What am I?</p>
+              </li>
+              <li>
+                <p class="riddle-q">I can be white or just barefaced; and leave the plodding truth outpaced. Yet under oath I'm redefined — for "perjury" you'll be confined. What am I?</p>
+              </li>
+              <li>
+                <p class="riddle-q">I can be white or just barefaced; and leave the plodding truth outpaced. Yet under oath I'm redefined — for "perjury" you'll be confined. What am I?</p>
+              </li>
+              <li>
+                <p class="riddle-q">I am an odd number. Take away a letter, and I become even. What number am I?</p>
               </li>
             </ol>` },
         ],
@@ -62,16 +71,103 @@ const TASK_CONTENT = {
         name: "Hula Hoop Pass",
         teamSize: "~8 players per team",
         prize: "1 shield — fastest team",
-        rules: "Teams link arms in a circle. The fastest team to pass a hula hoop all the way around the circle — without breaking the chain — wins.",
+        rules: "Teams link arms in a chain. The fastest team to pass a hula hoop all the way over — without breaking the chain — wins.",
       },
       {
-        // TODO: we need reveal picture and reveal answer sheet for this task - that means two buttons
-        name: "100-Item Memory",
+        name: "Memory Game",
         teamSize: "~4 players per team",
         prize: "1 shield — most items recalled",
-        rules: "A picture of 100 items is shown on screen for a minute. Teams then recall as many items as they can. Teams will swap sheets for marking; the team with the most correct items recalled wins.",
+        rules: "A picture of assorted items is shown on screen for a minute. Teams then recall as many items as they can. Teams will swap sheets for marking; the team with the most correct items recalled wins.",
         reveals: [
-          { button: "Reveal", label: "100-item picture", body: `<p class="placeholder">Add the memory image here.</p>` },
+          { button: "Reveal picture", label: "The picture", body: `<img class="reveal-img" src="/static/85_item_image.png" alt="Items to memorise">` },
+          { button: "Reveal answers", label: "Answer sheet", body: `
+            <ol class="answer-list">
+              <li>(Henricks) gin</li>
+              <li>Double decker bus</li>
+              <li>Lego man</li>
+              <li>Cafetière</li>
+              <li>Headphones</li>
+              <li>China plate</li>
+              <li>(Ready salted) crisps</li>
+              <li>Wrench</li>
+              <li>WD40</li>
+              <li>(Ikea) bag</li>
+              <li>(Sockeye) salmon</li>
+              <li>Marmite</li>
+              <li>(Nissan) car</li>
+              <li>Sunglasses</li>
+              <li>(Financial Times) newspaper</li>
+              <li>(Negroni) cocktail</li>
+              <li>(Cheerios) cereal</li>
+              <li>Hockey stick</li>
+              <li>Camera</li>
+              <li>(Colman's) mustard</li>
+              <li>Spacehopper</li>
+              <li>Bicycle</li>
+              <li>(Haagen dazs) ice cream</li>
+              <li>Airpods</li>
+              <li>Vesper moped</li>
+              <li>Sausage roll</li>
+              <li>(Cypressa) olives</li>
+              <li>(Nord) keyboard</li>
+              <li>(Birkenstocks) sandal</li>
+              <li>Barbecue</li>
+              <li>Tinned tuna</li>
+              <li>Greggs bag</li>
+              <li>JCB digger</li>
+              <li>Sunderland shirt</li>
+              <li>Microphone</li>
+              <li>(Green giant) sweetcorn</li>
+              <li>Deck of cards</li>
+              <li>Catan</li>
+              <li>Water bottle</li>
+              <li>Rollerskate</li>
+              <li>Helicopter</li>
+              <li>(Twinings) tea</li>
+              <li>(Macbook) laptop</li>
+              <li>Pen</li>
+              <li>(Macallan) whiskey</li>
+              <li>Lizard</li>
+              <li>(Converse) shoes</li>
+              <li>Nutella</li>
+              <li>Calculator</li>
+              <li>Monopoly</li>
+              <li>Candle</li>
+              <li>Umbrella</li>
+              <li>Watch</li>
+              <li>Lamp</li>
+              <li>Lego brick</li>
+              <li>Pritt stick</li>
+              <li>Trowel</li>
+              <li>Shuttlecock</li>
+              <li>(Sopranos) Blu-ray boxset</li>
+              <li>Keys</li>
+              <li>Top hat</li>
+              <li>Hoodie</li>
+              <li>Brick phone</li>
+              <li>Rugby ball</li>
+              <li>Flask</li>
+              <li>(Playstation) controller</li>
+              <li>Fruit pastilles</li>
+              <li>Penknife</li>
+              <li>Toblerone</li>
+              <li>Cellotape</li>
+              <li>Dice</li>
+              <li>Postbox</li>
+              <li>(Tyrell's) crisps</li>
+              <li>Rubber gloves</li>
+              <li>Hairdryer</li>
+              <li>(Madrí) beer</li>
+              <li>Teapot</li>
+              <li>Padlock</li>
+              <li>HP sauce</li>
+              <li>Batteries</li>
+              <li>Parrot</li>
+              <li>Dune uprising</li>
+              <li>Paper aeroplane</li>
+              <li>Skateboard</li>
+              <li>Coca Cola</li>
+            </ol>` },
         ],
       },
     ],
@@ -232,15 +328,19 @@ function taskBlockHTML(t) {
         </div>
       </div>
       <p class="task-rules">${t.rules}</p>
-      ${(t.reveals || []).map((r) => `
-        <div class="task-reveal">
-          <button class="reveal-btn" type="button" data-label="${r.button}">${r.button}</button>
-          <div class="reveal-body" hidden>
+      ${(t.reveals && t.reveals.length) ? `
+        <div class="reveal-row">
+          ${t.reveals.map((r, i) => `
+            <button class="reveal-btn" type="button" data-reveal="${i}" data-label="${r.button}">${r.button}</button>
+          `).join("")}
+        </div>
+        ${t.reveals.map((r, i) => `
+          <div class="reveal-body" data-reveal="${i}" hidden>
             ${r.label ? `<div class="task-media-label">${r.label}</div>` : ""}
             <div class="reveal-content">${r.body}</div>
           </div>
-        </div>
-      `).join("")}
+        `).join("")}
+      ` : ""}
     </div>
   `;
 }
@@ -360,7 +460,8 @@ taskContent.addEventListener("click", (e) => {
   }
   const revealBtn = e.target.closest(".reveal-btn");
   if (revealBtn) {
-    const body = revealBtn.closest(".task-reveal").querySelector(".reveal-body");
+    const idx = revealBtn.dataset.reveal;
+    const body = revealBtn.closest(".task-block").querySelector(`.reveal-body[data-reveal="${idx}"]`);
     body.hidden = !body.hidden;
     revealBtn.textContent = body.hidden ? revealBtn.dataset.label : "Hide";
     revealBtn.classList.toggle("revealed", !body.hidden);

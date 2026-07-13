@@ -300,7 +300,12 @@ main#grid {
   border-bottom-color: var(--gold);
 }
 
-.task-reveal { margin-top: 1.2rem; }
+.reveal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
 
 .reveal-btn {
   background: rgba(201, 162, 74, 0.12);
@@ -325,6 +330,32 @@ main#grid {
 .reveal-content {
   color: var(--text);
   line-height: 1.55;
+}
+.reveal-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 3px;
+  border: 1px solid rgba(201, 162, 74, 0.3);
+}
+
+.answer-list {
+  columns: 3;
+  column-gap: 2rem;
+  margin: 0;
+  padding-left: 1.4rem;
+}
+.answer-list > li {
+  break-inside: avoid;
+  margin-bottom: 0.3rem;
+  padding-left: 0.2rem;
+  color: var(--text);
+}
+.answer-list > li::marker {
+  color: var(--accent);
+}
+@media (max-width: 700px) {
+  .answer-list { columns: 2; }
 }
 
 .riddle-list {
