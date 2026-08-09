@@ -9,6 +9,10 @@ let currentStage = "T1";
 const nightAudio = new Audio("/static/music/night.mp3");
 nightAudio.loop = true;
 
+// Looping track for the title screen (static/music/title.mp3)
+const titleAudio = new Audio("/static/music/title.mp3");
+titleAudio.loop = true;
+
 function updateNightMusic() {
   const stage = STAGES.find((s) => s.id === currentStage);
   if (stage && stage.type === "night") {
@@ -490,7 +494,21 @@ renderPhaseDiagram();
 
 const titleScreen = document.getElementById("title-screen");
 const enterBtn = document.getElementById("enter-btn");
+
+// Browsers block autoplay before any interaction, so try straight away (works
+// when the browser already trusts the site) and otherwise start on the first
+// click or keypress while the title screen is still up.
+titleAudio.play().catch(() => {
+  const startTitleMusic = () => {
+    if (document.body.contains(titleScreen)) titleAudio.play().catch(() => {});
+  };
+  window.addEventListener("pointerdown", startTitleMusic, { once: true });
+  window.addEventListener("keydown", startTitleMusic, { once: true });
+});
+
 enterBtn.addEventListener("click", () => {
+  titleAudio.pause();
+  titleAudio.currentTime = 0;
   titleScreen.classList.add("hidden");
   setTimeout(() => titleScreen.remove(), 800);
 });
