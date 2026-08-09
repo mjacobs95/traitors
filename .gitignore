@@ -6,3 +6,4 @@ venv/
 players.json
 game_state.json
 static/photos/*.jpg
+static/music/*.mp3

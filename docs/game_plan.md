@@ -124,4 +124,4 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 - [x] Fill in text on rules page
 - [x] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, memory picture, etc.)
 - [x] Complete profile pictures
-- [ ] Research how to make the app play music during Night Stages
+- [x] Research how to make the app play music during Night Stages

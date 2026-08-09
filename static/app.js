@@ -5,6 +5,20 @@ const sidebarStages = document.getElementById("sidebar-stages");
 let players = [];
 let currentStage = "T1";
 
+// Looping track for the night stages
+const nightAudio = new Audio("/static/music/night.mp3");
+nightAudio.loop = true;
+
+function updateNightMusic() {
+  const stage = STAGES.find((s) => s.id === currentStage);
+  if (stage && stage.type === "night") {
+    nightAudio.play().catch(() => {});
+  } else if (!nightAudio.paused) {
+    nightAudio.pause();
+    nightAudio.currentTime = 0;
+  }
+}
+
 const STAGE_ICONS = {
   task: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>`,
   rt:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="5"/><circle cx="12" cy="3.5" r="1.5" fill="currentColor"/><circle cx="20.5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="20.5" r="1.5" fill="currentColor"/><circle cx="3.5" cy="12" r="1.5" fill="currentColor"/></svg>`,
@@ -244,6 +258,7 @@ async function setShield(id, shielded) {
 async function resetGame() {
   await fetch("/api/reset", { method: "POST" });
   await render();
+  updateNightMusic();
   // Reset returns the game to the start: stage is back to Task 1, so show its page.
   renderTaskPage("T1");
   showPage("task");
@@ -442,6 +457,7 @@ sidebarStages.addEventListener("click", async (e) => {
     await setStage(stageId);
     await render();
   }
+  updateNightMusic();
   const page = STAGE_PAGE[stage.type] || "players";
   if (page === "task") renderTaskPage(stageId);
   showPage(page);
