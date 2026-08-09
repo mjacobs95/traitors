@@ -52,13 +52,13 @@ const TASK_CONTENT = {
                 <p class="riddle-q">I don't have lungs yet air I need; and just like you on food I feed. Although, unchecked, I can cause strife; a douse with water ends my life. What am I?</p>
               </li>
               <li>
-                <p class="riddle-q">I can be white or just barefaced; and leave the plodding truth outpaced. Yet under oath I'm redefined — for "perjury" you'll be confined. What am I?</p>
+                <p class="riddle-q">I am an odd number. Take away a letter, and I become even. What am I?</p>
               </li>
               <li>
-                <p class="riddle-q">I can be white or just barefaced; and leave the plodding truth outpaced. Yet under oath I'm redefined — for "perjury" you'll be confined. What am I?</p>
+                <p class="riddle-q">I have thirteen hearts but no other organs. What am I?</p>
               </li>
               <li>
-                <p class="riddle-q">I am an odd number. Take away a letter, and I become even. What number am I?</p>
+                <p class="riddle-q">I occur once in a minute, twice in a moment, but never in a thousand years. What am I?</p>
               </li>
             </ol>` },
         ],

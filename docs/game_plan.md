@@ -102,9 +102,8 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 - [x] **Blindfolds** x24 - plus a few spares
 
 ### Day 1 — The Riddle Race
-- [ ] **Blank answer sheets** ×10 — ~6 teams + spares - empty box for each answer.
+- [ ] **Blank paper** ×10 — ~6 teams + spares - empty box for each answer.
 - [x] **Pens** ×12 — one per team + spares.
-- [ ] **Master answer sheet** ×1 — host copy for checking.
 
 ### Day 2 — Hula Hoop Pass & Memory Game
 - [x] **Hula hoops** ×2 — 1 in use + spare.
@@ -123,6 +122,6 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 
 ## To do list:
 - [x] Fill in text on rules page
-- [ ] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, memory picture, etc.)
+- [x] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, memory picture, etc.)
 - [x] Complete profile pictures
 - [ ] Research how to make the app play music during Night Stages
