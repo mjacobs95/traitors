@@ -124,6 +124,5 @@ Quantities assume **~24 players, 2 hosts**. Adjust if headcount changes.
 ## To do list:
 - [x] Fill in text on rules page
 - [ ] Make custom pages for Tasks 1, 2, 3 and Final Task (including rules, memory picture, etc.)
-- [ ] Complete profile pictures
+- [x] Complete profile pictures
 - [ ] Research how to make the app play music during Night Stages
-- [ ] [Optional] Diagrams to demonstrate the solo cup and hula hoop pass pages

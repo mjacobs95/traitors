@@ -77,7 +77,7 @@ const TASK_CONTENT = {
         name: "Memory Game",
         teamSize: "~4 players per team",
         prize: "1 shield — most items recalled",
-        rules: "A picture of assorted items is shown on screen for a minute. Teams then recall as many items as they can. Teams will swap sheets for marking; the team with the most correct items recalled wins.",
+        rules: "A picture of assorted items is shown on screen for thirty seconds. Teams then recall as many items as they can. Teams will swap sheets for marking; the team with the most correct items recalled wins.",
         reveals: [
           { button: "Reveal picture", label: "The picture", body: `<img class="reveal-img" src="/static/85_item_image.png" alt="Items to memorise">` },
           { button: "Reveal answers", label: "Answer sheet", body: `
@@ -251,8 +251,10 @@ async function resetGame() {
 
 function cardHTML(p) {
   const photoUrl = `/static/photos/${p.photo}`;
-  const roleClass = p.status === "banished" ? "revealed " + p.role : "";
-  const roleText = p.status === "banished" ? p.role : "&nbsp;";
+  // Banishments during the Final stay secret — no role reveal on the card.
+  const revealRole = p.status === "banished" && p.banishedStage !== "F";
+  const roleClass = revealRole ? "revealed " + p.role : "";
+  const roleText = revealRole ? p.role : "&nbsp;";
   const isShielded = p.shielded && p.status === "active";
   const shieldHTML = isShielded ? `
     <div class="shield-overlay">

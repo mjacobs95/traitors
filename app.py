@@ -72,6 +72,12 @@ def set_status(player_id):
             if status == "murdered" and p.get("shielded"):
                 abort(400, "shielded players cannot be murdered")
             p["status"] = status
+            # Remember which stage a banishment happened in so the UI can
+            # keep roles hidden for players banished during the Final.
+            if status == "banished":
+                p["banishedStage"] = load_state()["stage"]
+            else:
+                p.pop("banishedStage", None)
             if status != "active":
                 p["shielded"] = False
             save_players(players)
@@ -100,6 +106,7 @@ def reset():
     for p in players:
         p["status"] = "active"
         p["shielded"] = False
+        p.pop("banishedStage", None)
     save_players(players)
     save_state({"stage": DEFAULT_STAGE})
     return jsonify({"players": players, "stage": DEFAULT_STAGE})

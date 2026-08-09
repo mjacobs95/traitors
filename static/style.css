@@ -236,8 +236,8 @@ main#grid {
   font-family: Georgia, serif;
   font-size: 0.72rem;
   letter-spacing: 0.04em;
-  color: var(--muted);
-  border: 1px solid rgba(138, 122, 106, 0.5);
+  color: var(--text);
+  border: 1px solid rgba(196, 178, 158, 0.55);
   border-radius: 999px;
   padding: 0.2rem 0.7rem;
   white-space: nowrap;
